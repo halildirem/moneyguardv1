@@ -1,0 +1,26 @@
+.dashboard {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+}
+
+.select {
+  background: var(--color-table-header);
+  border: none;
+  border-radius: var(--radius-dropdown);
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--color-text-primary);
+  font: var(--font-input);
+  cursor: pointer;
+}
+
+.select option {
+  background: var(--color-bg-medium);
+}
+
+@media (max-width: 767px) {
+  .dashboard {
+    flex-direction: column;
+    width: 100%;
+  }
+}

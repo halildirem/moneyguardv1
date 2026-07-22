@@ -1,0 +1,159 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.title {
+  font: var(--font-title);
+  color: var(--color-text-primary);
+  text-align: center;
+  margin: 0 0 var(--spacing-md);
+}
+
+.toggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.toggleLabelMuted {
+  color: var(--color-text-secondary);
+  font: var(--font-input);
+}
+
+.toggleLabelIncome {
+  color: var(--color-income);
+  font: var(--font-input);
+}
+
+.toggleLabelExpense {
+  color: var(--color-expense);
+  font: var(--font-input);
+}
+
+.switchIncome,
+.switchExpense {
+  width: 60px;
+  height: 30px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.switchIncome {
+  background: var(--toggle-income-bg);
+}
+
+.switchExpense {
+  background: var(--toggle-expense-bg);
+}
+
+.switchThumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #333333;
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+.switchExpense .switchThumb {
+  transform: translateX(30px);
+}
+
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.row .field {
+  flex: 1;
+}
+
+.select,
+.input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-input-border);
+  color: var(--color-text-primary);
+  font: var(--font-input);
+  padding: var(--spacing-sm) 0;
+  width: 100%;
+  outline: none;
+}
+
+.select option {
+  background: var(--color-bg-medium);
+  color: var(--color-text-primary);
+}
+
+.input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.calendarIcon {
+  position: absolute;
+  right: 0;
+  color: var(--color-text-secondary);
+  pointer-events: none;
+}
+
+.error {
+  margin: 0;
+  font: var(--font-small);
+  color: var(--color-expense);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.primaryBtn {
+  background: var(--btn-primary-bg);
+  border: none;
+  border-radius: var(--radius-btn);
+  color: var(--color-text-primary);
+  font: var(--font-btn);
+  letter-spacing: var(--letter-spacing-btn);
+  text-transform: uppercase;
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.secondaryBtn {
+  background: var(--btn-secondary-bg);
+  border: 2px solid var(--btn-secondary-border);
+  border-radius: var(--radius-btn);
+  color: var(--btn-secondary-text);
+  font: var(--font-btn);
+  letter-spacing: var(--letter-spacing-btn);
+  text-transform: uppercase;
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .row {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,39 @@
+.wrapper {
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead tr {
+  background: var(--color-table-header);
+}
+
+.table th {
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+  font: var(--font-table-header);
+  color: var(--color-text-secondary);
+}
+
+.placeholder {
+  color: var(--color-text-secondary);
+  font: var(--font-input);
+  text-align: center;
+  padding: var(--spacing-xxl) 0;
+}
+
+@media (max-width: 767px) {
+  .table,
+  .table tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .table thead {
+    display: none;
+  }
+}

@@ -1,0 +1,46 @@
+.table {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font: var(--font-table-body);
+  color: var(--color-text-primary);
+}
+
+.colorBadge {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.name {
+  flex: 1;
+}
+
+.summary {
+  border-top: 1px solid var(--color-divider);
+  padding-top: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  font: var(--font-table-body);
+  color: var(--color-expense-alt);
+}

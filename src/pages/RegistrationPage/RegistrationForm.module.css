@@ -1,0 +1,80 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  width: 100%;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  position: absolute;
+  left: 0;
+  color: var(--color-text-secondary);
+  font-size: 18px;
+}
+
+.input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-input-border);
+  color: var(--color-text-primary);
+  font: var(--font-input);
+  padding: var(--spacing-sm) 0 var(--spacing-sm) 36px;
+  width: 100%;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.input:focus {
+  border-bottom-color: var(--color-text-primary);
+}
+
+.error {
+  margin: var(--spacing-xs) 0 0;
+  font: var(--font-small);
+  color: var(--color-expense);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.primaryBtn {
+  background: var(--btn-primary-bg);
+  border: none;
+  border-radius: var(--radius-btn);
+  color: var(--color-text-primary);
+  font: var(--font-btn);
+  letter-spacing: var(--letter-spacing-btn);
+  text-transform: uppercase;
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.secondaryBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--btn-secondary-bg);
+  border: 2px solid var(--btn-secondary-border);
+  border-radius: var(--radius-btn);
+  color: var(--btn-secondary-text);
+  font: var(--font-btn);
+  letter-spacing: var(--letter-spacing-btn);
+  text-transform: uppercase;
+  height: 50px;
+  width: 100%;
+  text-decoration: none;
+}
