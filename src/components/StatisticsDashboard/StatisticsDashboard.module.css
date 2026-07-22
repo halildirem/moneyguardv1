@@ -4,7 +4,17 @@
   align-items: flex-start;
 }
 
-.select {
+.dropdown {
+  position: relative;
+  min-width: 140px;
+}
+
+.dropdownToggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  width: 100%;
   background: var(--color-table-header);
   border: none;
   border-radius: var(--radius-dropdown);
@@ -14,8 +24,52 @@
   cursor: pointer;
 }
 
-.select option {
-  background: var(--color-bg-medium);
+.dropdownArrow,
+.dropdownArrowOpen {
+  color: var(--color-text-secondary);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.dropdownArrowOpen {
+  transform: rotate(180deg);
+}
+
+.dropdownList {
+  position: absolute;
+  top: calc(100% + var(--spacing-xs));
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin: 0;
+  padding: var(--spacing-xs) 0;
+  list-style: none;
+  background: linear-gradient(180deg, #8b5cc3 0%, var(--color-bg-medium) 100%);
+  border-radius: var(--radius-dropdown);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.dropdownItem,
+.dropdownItemActive {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+  font: var(--font-input);
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+}
+
+.dropdownItem:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dropdownItemActive {
+  color: var(--color-expense);
 }
 
 @media (max-width: 767px) {

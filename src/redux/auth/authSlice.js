@@ -9,11 +9,10 @@ const initialState = {
   },
   token: null,
   isLoggedIn: false,
-  // Starts true: a persisted token may exist and refreshUser() hasn't
-  // settled yet on first render, so routes must wait instead of guessing
-  // isLoggedIn=false and bouncing an authenticated user to /login.
   isRefreshing: true,
 };
+
+const loggedOutState = { ...initialState, isRefreshing: false };
 
 const authSlice = createSlice({
   name: 'auth',
@@ -31,8 +30,8 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
-      .addCase(logOut.fulfilled, () => initialState)
-      .addCase(logOut.rejected, () => initialState)
+      .addCase(logOut.fulfilled, () => loggedOutState)
+      .addCase(logOut.rejected, () => loggedOutState)
       .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
       })

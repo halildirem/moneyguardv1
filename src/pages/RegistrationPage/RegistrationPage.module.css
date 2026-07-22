@@ -4,12 +4,48 @@
   align-items: center;
   justify-content: center;
   padding: var(--spacing-lg);
+  background-image: url('../../assets/backgrounds/bg-register.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   background: linear-gradient(
     135deg,
-    var(--color-bg-medium) 0%,
-    var(--color-bg-dark) 60%,
-    #000000 100%
+    rgba(26, 10, 46, 0.82) 0%,
+    rgba(43, 26, 74, 0.72) 50%,
+    rgba(10, 5, 20, 0.82) 100%
   );
+}
+
+.page::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at bottom left,
+      rgba(111, 50, 180, 0.3) 0%,
+      rgba(111, 50, 180, 0) 40%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(80, 30, 160, 0.25) 0%,
+      rgba(80, 30, 160, 0) 35%
+    );
+  filter: blur(60px);
+}
+
+.page > * {
+  position: relative;
+  z-index: 1;
 }
 
 .card {

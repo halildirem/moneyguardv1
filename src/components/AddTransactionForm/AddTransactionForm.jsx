@@ -1,15 +1,71 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import DatePicker from 'react-datepicker';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { MdCalendarToday } from 'react-icons/md';
+import { MdCalendarToday, MdKeyboardArrowDown } from 'react-icons/md';
 import { addTransaction } from '../../redux/finance/financeOperations';
 import { refreshUser } from '../../redux/auth/authOperations';
 import { selectCategories } from '../../redux/finance/financeSelectors';
 import css from './AddTransactionForm.module.css';
+
+const CategoryDropdown = ({ categories, value, onChange }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const wrapperRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const selectedCategory = categories.find((category) => category.id === value);
+
+  return (
+    <div className={css.dropdown} ref={wrapperRef}>
+      <button
+        type="button"
+        className={css.dropdownToggle}
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
+        <span className={selectedCategory ? undefined : css.dropdownPlaceholder}>
+          {selectedCategory ? selectedCategory.name : 'Select a category'}
+        </span>
+        <MdKeyboardArrowDown
+          className={isOpen ? css.dropdownArrowOpen : css.dropdownArrow}
+        />
+      </button>
+      {isOpen && (
+        <ul className={css.dropdownList}>
+          {categories.map((category) => (
+            <li key={category.id}>
+              <button
+                type="button"
+                className={
+                  category.id === value
+                    ? css.dropdownItemActive
+                    : css.dropdownItem
+                }
+                onClick={() => {
+                  onChange(category.id);
+                  setIsOpen(false);
+                }}
+              >
+                {category.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
 
 const schema = yup.object({
   type: yup.string().oneOf(['INCOME', 'EXPENSE']).required(),
@@ -69,7 +125,6 @@ const AddTransactionForm = ({ onClose }) => {
 
   const onSubmit = async (values) => {
     try {
-      // API rejects expense transactions with a positive amount.
       const signedAmount =
         values.type === 'EXPENSE'
           ? -Math.abs(Number(values.amount))
@@ -105,11 +160,15 @@ const AddTransactionForm = ({ onClose }) => {
         </span>
         <button
           type="button"
-          className={isExpense ? css.switchExpense : css.switchIncome}
+          className={css.switchTrack}
           onClick={toggleType}
           aria-label="Toggle transaction type"
         >
-          <span className={css.switchThumb}>{isExpense ? '-' : '+'}</span>
+          <span
+            className={isExpense ? css.switchCircleExpense : css.switchCircle}
+          >
+            +
+          </span>
         </button>
         <span
           className={isExpense ? css.toggleLabelExpense : css.toggleLabelMuted}
@@ -120,14 +179,17 @@ const AddTransactionForm = ({ onClose }) => {
 
       {isExpense && (
         <div className={css.field}>
-          <select className={css.select} {...register('categoryId')}>
-            <option value="">Select a category</option>
-            {expenseCategories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
+          <Controller
+            control={control}
+            name="categoryId"
+            render={({ field }) => (
+              <CategoryDropdown
+                categories={expenseCategories}
+                value={field.value}
+                onChange={field.onChange}
+              />
+            )}
+          />
         </div>
       )}
       {errors.categoryId && (

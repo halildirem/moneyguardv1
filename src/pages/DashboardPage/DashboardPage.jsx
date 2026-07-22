@@ -9,20 +9,22 @@ import css from './DashboardPage.module.css';
 const DashboardPage = () => {
   return (
     <div className={css.page}>
-      <Header />
-      <div className={css.body}>
-        <aside className={css.sidebar}>
-          <Navigation />
-          <Balance />
-          <div className={css.currencySlot}>
-            <Currency />
-          </div>
-        </aside>
-        <main className={css.main}>
-          <Outlet />
-        </main>
+      <div className={css.content}>
+        <Header />
+        <div className={css.body}>
+          <aside className={css.sidebar}>
+            <Navigation />
+            <Balance />
+            <div className={css.currencySlot}>
+              <Currency />
+            </div>
+          </aside>
+          <main className={css.main}>
+            <Outlet />
+          </main>
+        </div>
+        <Loader />
       </div>
-      <Loader />
     </div>
   );
 };

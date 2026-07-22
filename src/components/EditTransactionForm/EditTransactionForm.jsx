@@ -2,11 +2,12 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import DatePicker from 'react-datepicker';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { MdCalendarToday } from 'react-icons/md';
 import { updateTransaction } from '../../redux/finance/financeOperations';
 import { refreshUser } from '../../redux/auth/authOperations';
+import { selectCategories } from '../../redux/finance/financeSelectors';
 import css from './EditTransactionForm.module.css';
 
 const schema = yup.object({
@@ -21,7 +22,11 @@ const schema = yup.object({
 
 const EditTransactionForm = ({ transaction, onClose }) => {
   const dispatch = useDispatch();
+  const categories = useSelector(selectCategories);
   const isExpense = transaction.type === 'EXPENSE';
+  const categoryName =
+    categories.find((category) => category.id === transaction.categoryId)
+      ?.name ?? (isExpense ? '—' : 'Income');
 
   const {
     register,
@@ -39,7 +44,6 @@ const EditTransactionForm = ({ transaction, onClose }) => {
 
   const onSubmit = async (values) => {
     try {
-      // API rejects expense transactions with a positive amount.
       const signedAmount = isExpense
         ? -Math.abs(Number(values.amount))
         : Math.abs(Number(values.amount));
@@ -70,6 +74,10 @@ const EditTransactionForm = ({ transaction, onClose }) => {
         {' / '}
         <span className={isExpense ? css.expense : css.muted}>Expense</span>
       </p>
+
+      <div className={css.field}>
+        <span className={css.categoryDisplay}>{categoryName}</span>
+      </div>
 
       <div className={css.row}>
         <div className={css.field}>

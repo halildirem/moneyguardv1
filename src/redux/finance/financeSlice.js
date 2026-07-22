@@ -16,12 +16,17 @@ const initialState = {
   totalBalance: 0,
   statistics: null,
   currencyRates: [],
+  selectedCurrency: 'TRY',
 };
 
 const financeSlice = createSlice({
   name: 'finance',
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedCurrency: (state, action) => {
+      state.selectedCurrency = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchTransactions.fulfilled, (state, action) => {
@@ -71,4 +76,5 @@ const financeSlice = createSlice({
   },
 });
 
+export const { setSelectedCurrency } = financeSlice.actions;
 export default financeSlice.reducer;

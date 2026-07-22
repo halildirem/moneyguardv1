@@ -4,12 +4,27 @@
   align-items: center;
   justify-content: center;
   padding: var(--spacing-lg);
+  background-image: url('../../assets/backgrounds/bg-login.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: linear-gradient(
     135deg,
-    var(--color-bg-medium) 0%,
-    var(--color-bg-dark) 60%,
-    #000000 100%
+    rgba(26, 10, 46, 0.82) 0%,
+    rgba(43, 26, 74, 0.72) 50%,
+    rgba(10, 5, 20, 0.82) 100%
   );
+}
+
+.page > * {
+  position: relative;
+  z-index: 1;
 }
 
 .card {

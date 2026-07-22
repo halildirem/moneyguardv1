@@ -1,4 +1,60 @@
+import { useEffect, useRef, useState } from 'react';
+import { MdKeyboardArrowDown } from 'react-icons/md';
 import css from './StatisticsDashboard.module.css';
+
+const Dropdown = ({ options, value, onChange }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const wrapperRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const selected = options.find((option) => option.value === value);
+
+  return (
+    <div className={css.dropdown} ref={wrapperRef}>
+      <button
+        type="button"
+        className={css.dropdownToggle}
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
+        <span>{selected?.label}</span>
+        <MdKeyboardArrowDown
+          className={isOpen ? css.dropdownArrowOpen : css.dropdownArrow}
+        />
+      </button>
+      {isOpen && (
+        <ul className={css.dropdownList}>
+          {options.map((option) => (
+            <li key={option.value}>
+              <button
+                type="button"
+                className={
+                  option.value === value
+                    ? css.dropdownItemActive
+                    : css.dropdownItem
+                }
+                onClick={() => {
+                  onChange(option.value);
+                  setIsOpen(false);
+                }}
+              >
+                {option.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
 
 const MONTHS = [
   'January',
@@ -21,28 +77,22 @@ const StatisticsDashboard = ({ month, year, onMonthChange, onYearChange }) => {
 
   return (
     <div className={css.dashboard}>
-      <select
-        className={css.select}
+      <Dropdown
+        options={MONTHS.map((label, index) => ({
+          value: index + 1,
+          label,
+        }))}
         value={month}
-        onChange={(event) => onMonthChange(Number(event.target.value))}
-      >
-        {MONTHS.map((label, index) => (
-          <option key={label} value={index + 1}>
-            {label}
-          </option>
-        ))}
-      </select>
-      <select
-        className={css.select}
+        onChange={onMonthChange}
+      />
+      <Dropdown
+        options={years.map((yearOption) => ({
+          value: yearOption,
+          label: String(yearOption),
+        }))}
         value={year}
-        onChange={(event) => onYearChange(Number(event.target.value))}
-      >
-        {years.map((yearOption) => (
-          <option key={yearOption} value={yearOption}>
-            {yearOption}
-          </option>
-        ))}
-      </select>
+        onChange={onYearChange}
+      />
     </div>
   );
 };

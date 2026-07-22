@@ -50,9 +50,6 @@ export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     const { auth } = thunkAPI.getState();
-    // Checked inside the thunk (not via `condition`) so pending/rejected
-    // always fire deterministically, flipping isRefreshing to false even
-    // when there is no token to check.
     if (!auth.token) {
       return thunkAPI.rejectWithValue('No token found');
     }

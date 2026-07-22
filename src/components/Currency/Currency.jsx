@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { fetchCurrencyRates } from '../../redux/finance/financeOperations';
 import { selectCurrencyRates } from '../../redux/finance/financeSelectors';
+import { rateAgainstUAH } from '../../utils/currency';
 import css from './Currency.module.css';
 
 ChartJS.register(
@@ -23,7 +24,7 @@ ChartJS.register(
   Tooltip,
 );
 
-const CODE_NAMES = { 840: 'USD', 978: 'EUR' };
+const DISPLAYED_CODES = ['USD', 'EUR', 'GBP'];
 
 const Currency = () => {
   const dispatch = useDispatch();
@@ -33,11 +34,17 @@ const Currency = () => {
     dispatch(fetchCurrencyRates());
   }, [dispatch]);
 
-  const rows = rates.map((rate) => ({
-    code: CODE_NAMES[rate.currencyCodeA] ?? rate.currencyCodeA,
-    buy: rate.rateBuy ?? rate.rateCross,
-    sell: rate.rateSell ?? rate.rateCross,
-  }));
+  const tryRate = rateAgainstUAH(rates, 'TRY');
+
+  const rows = DISPLAYED_CODES.map((code) => {
+    const rate = rateAgainstUAH(rates, code);
+    if (!rate || !tryRate) return null;
+    return {
+      code,
+      buy: rate.buy / tryRate.sell,
+      sell: rate.sell / tryRate.sell,
+    };
+  }).filter(Boolean);
 
   const chartData = {
     labels: rows.map((row) => row.code),
@@ -77,8 +84,8 @@ const Currency = () => {
           {rows.map((row) => (
             <tr key={row.code}>
               <td>{row.code}</td>
-              <td>{row.buy?.toFixed(2)}</td>
-              <td>{row.sell?.toFixed(2)}</td>
+              <td>{row.buy.toFixed(2)}</td>
+              <td>{row.sell.toFixed(2)}</td>
             </tr>
           ))}
         </tbody>

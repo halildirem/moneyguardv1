@@ -13,9 +13,6 @@ import authReducer from './auth/authSlice';
 import financeReducer from './finance/financeSlice';
 import globalReducer from './global/globalSlice';
 
-// Inlined instead of importing 'redux-persist/lib/storage': this project's
-// Vite/rolldown build mis-unwraps that deep CJS subpath, yielding the raw
-// module object instead of its default export (storage.getItem undefined).
 const localStorageEngine = {
   getItem: (key) => Promise.resolve(window.localStorage.getItem(key)),
   setItem: (key, value) => Promise.resolve(window.localStorage.setItem(key, value)),

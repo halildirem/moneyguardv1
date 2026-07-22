@@ -6,12 +6,10 @@
 
 .table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: var(--spacing-xs) 0;
+  margin: 0 calc(-1 * var(--spacing-xs));
   font: var(--font-table-body);
-}
-
-.table thead tr {
-  background: var(--color-table-header);
 }
 
 .table th,
@@ -22,9 +20,10 @@
 }
 
 .table th {
+  background: var(--color-table-header);
+  border-radius: var(--radius-table-header);
   font: var(--font-table-header);
   color: var(--color-text-secondary);
-  border-radius: var(--radius-table-header);
 }
 
 .chart {

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { MdLogout } from 'react-icons/md';
 import { selectUser } from '../../redux/auth/authSelectors';
@@ -10,6 +11,7 @@ import css from './Header.module.css';
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector(selectUser);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
@@ -18,6 +20,7 @@ const Header = () => {
   const handleLogout = async () => {
     try {
       await dispatch(logOut()).unwrap();
+      navigate('/login');
     } catch (error) {
       toast.error(typeof error === 'string' ? error : 'Logout failed');
     } finally {
@@ -39,9 +42,9 @@ const Header = () => {
           type="button"
           className={css.exitBtn}
           onClick={() => setShowLogoutModal(true)}
-          aria-label="Log out"
         >
           <MdLogout />
+          <span>Exit</span>
         </button>
       </div>
 

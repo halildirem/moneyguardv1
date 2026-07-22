@@ -33,41 +33,42 @@
   font: var(--font-input);
 }
 
-.switchIncome,
-.switchExpense {
-  width: 60px;
-  height: 30px;
-  border-radius: 15px;
+.switchTrack {
+  width: 56px;
+  height: 28px;
+  border-radius: 14px;
   border: none;
+  background: rgba(255, 255, 255, 0.2);
   cursor: pointer;
   position: relative;
-  padding: 2px;
+  padding: 0;
   flex-shrink: 0;
 }
 
-.switchIncome {
-  background: var(--toggle-income-bg);
-}
-
-.switchExpense {
-  background: var(--toggle-expense-bg);
-}
-
-.switchThumb {
+.switchCircle,
+.switchCircleExpense {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: #ffffff;
-  color: #333333;
+  color: #ffffff;
   font-weight: 700;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.switchExpense .switchThumb {
-  transform: translateX(30px);
+.switchCircle {
+  background: var(--toggle-income-bg);
+  transform: translateX(0);
+}
+
+.switchCircleExpense {
+  background: var(--toggle-expense-bg);
+  transform: translateX(28px);
 }
 
 .field {
@@ -85,7 +86,6 @@
   flex: 1;
 }
 
-.select,
 .input {
   background: transparent;
   border: none;
@@ -97,13 +97,79 @@
   outline: none;
 }
 
-.select option {
-  background: var(--color-bg-medium);
-  color: var(--color-text-primary);
-}
-
 .input::placeholder {
   color: var(--color-text-secondary);
+}
+
+.dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.dropdownToggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-input-border);
+  color: var(--color-text-primary);
+  font: var(--font-input);
+  padding: var(--spacing-sm) 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+.dropdownPlaceholder {
+  color: var(--color-text-secondary);
+}
+
+.dropdownArrow,
+.dropdownArrowOpen {
+  color: var(--color-text-secondary);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.dropdownArrowOpen {
+  transform: rotate(180deg);
+}
+
+.dropdownList {
+  position: absolute;
+  top: calc(100% + var(--spacing-xs));
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin: 0;
+  padding: var(--spacing-xs) 0;
+  list-style: none;
+  background: linear-gradient(180deg, #8b5cc3 0%, var(--color-bg-medium) 100%);
+  border-radius: var(--radius-dropdown);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.dropdownItem,
+.dropdownItemActive {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+  font: var(--font-input);
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+}
+
+.dropdownItem:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dropdownItemActive {
+  color: var(--color-expense);
 }
 
 .calendarIcon {

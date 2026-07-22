@@ -46,6 +46,12 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.exitBtn span {
+  font: var(--font-nav);
+  font-size: 16px;
 }
 
 .logoutModal {
