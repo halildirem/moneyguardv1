@@ -5,6 +5,7 @@
   height: 60px;
   padding: 0 var(--spacing-xl);
   flex-shrink: 0;
+  gap: var(--spacing-sm);
 }
 
 .logo {
@@ -14,28 +15,36 @@
   font: var(--font-logo);
   color: var(--color-text-primary);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .logoIcon {
   width: 24px;
   height: 24px;
+  flex-shrink: 0;
 }
 
 .userSection {
   display: flex;
   align-items: center;
   gap: var(--spacing-md);
+  min-width: 0;
 }
 
 .username {
   font: var(--font-nav);
   color: var(--color-text-primary);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .divider {
   width: 1px;
   height: 20px;
   background: var(--color-divider);
+  flex-shrink: 0;
 }
 
 .exitBtn {
@@ -47,6 +56,7 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
+  flex-shrink: 0;
 }
 
 .exitBtn span {
