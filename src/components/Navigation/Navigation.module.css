@@ -53,10 +53,11 @@
 
   .active {
     background: var(--btn-gold-bg);
+    color: #100c08;
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 768px) {
   .nav {
     flex-direction: column;
   }

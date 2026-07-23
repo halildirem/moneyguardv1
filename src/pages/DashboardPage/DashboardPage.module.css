@@ -79,6 +79,21 @@
 }
 
 @media (max-width: 767px) {
+  .page {
+    overflow: visible;
+  }
+
+  .sidebar,
+  .main {
+    overflow-y: visible;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 52px;
+    z-index: 20;
+  }
+
   .currencySlot {
     display: none;
   }
