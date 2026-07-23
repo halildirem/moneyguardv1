@@ -1,4 +1,5 @@
 import { CHART_COLORS } from '../../utils/chartColors';
+import { formatMoney } from '../../utils/currency';
 import css from './StatisticsTable.module.css';
 
 const StatisticsTable = ({ categories, expenseSummary, incomeSummary }) => {
@@ -14,18 +15,18 @@ const StatisticsTable = ({ categories, expenseSummary, incomeSummary }) => {
               }}
             />
             <span className={css.name}>{category.name}</span>
-            <span className={css.total}>{category.total.toFixed(2)}</span>
+            <span className={css.total}>{formatMoney(category.total)}</span>
           </div>
         ))}
       </div>
       <div className={css.summary}>
-        <div className={css.summaryRow}>
+        <div className={`${css.summaryRow} ${css.summaryRowExpense}`}>
           <span>Expenses:</span>
-          <span>{expenseSummary.toFixed(2)}</span>
+          <span>{formatMoney(expenseSummary)}</span>
         </div>
-        <div className={css.summaryRow}>
+        <div className={`${css.summaryRow} ${css.summaryRowIncome}`}>
           <span>Income:</span>
-          <span>{incomeSummary.toFixed(2)}</span>
+          <span>{formatMoney(incomeSummary)}</span>
         </div>
       </div>
     </div>

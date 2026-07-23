@@ -2,6 +2,8 @@ import { useSelector } from 'react-redux';
 import {
   selectTransactions,
   selectCategories,
+  selectCurrencyRates,
+  selectSelectedCurrency,
 } from '../../redux/finance/financeSelectors';
 import TransactionsItem from '../TransactionsItem/TransactionsItem';
 import css from './TransactionsList.module.css';
@@ -9,6 +11,8 @@ import css from './TransactionsList.module.css';
 const TransactionsList = ({ onEdit }) => {
   const transactions = useSelector(selectTransactions);
   const categories = useSelector(selectCategories);
+  const rates = useSelector(selectCurrencyRates);
+  const currency = useSelector(selectSelectedCurrency);
 
   const categoryNameById = categories.reduce((acc, category) => {
     acc[category.id] = category.name;
@@ -39,6 +43,8 @@ const TransactionsList = ({ onEdit }) => {
               transaction={transaction}
               categoryName={categoryNameById[transaction.categoryId] ?? '—'}
               onEdit={onEdit}
+              currency={currency}
+              rates={rates}
             />
           ))}
         </tbody>

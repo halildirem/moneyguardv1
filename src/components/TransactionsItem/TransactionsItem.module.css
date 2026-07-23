@@ -6,11 +6,11 @@
 }
 
 .sumIncome {
-  color: var(--color-income);
+  color: var(--color-money-income);
 }
 
 .sumExpense {
-  color: var(--color-expense);
+  color: var(--color-money-expense);
 }
 
 .actions {
@@ -54,11 +54,11 @@
   }
 
   tr.rowIncome {
-    border-left-color: var(--color-income);
+    border-left-color: var(--color-money-income);
   }
 
   tr.rowExpense {
-    border-left-color: var(--color-expense);
+    border-left-color: var(--color-money-expense);
   }
 
   .cell {

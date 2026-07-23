@@ -1,23 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
 :root {
   --color-bg-dark: #1a0a2e;
   --color-bg-medium: #2b1a4a;
   --color-bg-light: #3a2160;
 
-  --color-card-bg: rgba(58, 33, 96, 0.85);
+  --color-card-bg: linear-gradient(180deg, rgba(50, 65, 225, 0.85) 0%, rgba(8, 15, 69, 0.85) 100%);
   --color-sidebar-bg: #2d1b55;
 
   --color-accent-gradient-start: #f8a23a;
   --color-accent-gradient-end: #e0458b;
 
-  --color-text-primary: #ffffff;
+  --color-dashboard-bg-start: #080f43;
+  --color-dashboard-bg-mid: #0f1881;
+  --color-dashboard-bg-end: #3645ea;
+
+  --color-sidebar-gradient-start: #080f45;
+  --color-sidebar-gradient-end: #3241e1;
+
+  --color-text-primary: #f3eeee;
   --color-text-secondary: rgba(255, 255, 255, 0.6);
   --color-text-muted: rgba(255, 255, 255, 0.4);
 
   --color-income: #ffb627;
   --color-expense: #ff6596;
   --color-expense-alt: #f8a23a;
+
+  --color-money-income: #66ff64;
+  --color-money-expense: #ff5f6d;
 
   --color-divider: rgba(255, 255, 255, 0.1);
   --color-input-border: rgba(255, 255, 255, 0.4);
@@ -29,11 +37,14 @@
   --btn-secondary-border: #ffffff;
   --btn-secondary-text: #ffffff;
 
-  --btn-delete-bg: linear-gradient(90deg, #f8a23a 0%, #e0458b 100%);
-  --btn-delete-text: #ffffff;
+  --btn-gold-bg: linear-gradient(135deg, #feff8a 0%, #efce4e 50%, #b86f11 100%);
+  --btn-gold-text: #3a2100;
 
-  --toggle-income-bg: #f8a23a;
-  --toggle-expense-bg: #ff6596;
+  --btn-delete-bg: var(--btn-gold-bg);
+  --btn-delete-text: var(--btn-gold-text);
+
+  --toggle-income-bg: var(--color-money-income);
+  --toggle-expense-bg: var(--color-money-expense);
 
   --chart-color-1: #fed057;
   --chart-color-2: #4abde8;

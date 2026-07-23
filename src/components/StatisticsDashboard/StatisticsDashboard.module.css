@@ -44,7 +44,11 @@
   margin: 0;
   padding: var(--spacing-xs) 0;
   list-style: none;
-  background: linear-gradient(180deg, #8b5cc3 0%, var(--color-bg-medium) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--color-sidebar-gradient-end) 0%,
+    var(--color-sidebar-gradient-start) 100%
+  );
   border-radius: var(--radius-dropdown);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   max-height: 220px;

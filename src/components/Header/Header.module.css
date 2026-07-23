@@ -13,7 +13,7 @@
   align-items: center;
   gap: var(--spacing-sm);
   font: var(--font-logo);
-  color: var(--color-text-primary);
+  color: #ffffff;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -85,10 +85,10 @@
 }
 
 .primaryBtn {
-  background: var(--btn-primary-bg);
+  background: var(--btn-gold-bg);
   border: none;
   border-radius: var(--radius-btn);
-  color: var(--color-text-primary);
+  color: var(--btn-gold-text);
   font: var(--font-btn);
   letter-spacing: var(--letter-spacing-btn);
   text-transform: uppercase;

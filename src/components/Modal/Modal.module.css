@@ -12,7 +12,11 @@
 }
 
 .box {
-  background: rgba(42, 18, 72, 0.97);
+  background: linear-gradient(
+    180deg,
+    rgba(50, 65, 225, 0.97) 0%,
+    rgba(8, 15, 69, 0.97) 100%
+  );
   border-radius: var(--radius-card);
   padding: var(--spacing-xl);
   width: 500px;

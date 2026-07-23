@@ -67,7 +67,7 @@
   justify-content: center;
   gap: var(--spacing-sm);
   font: var(--font-logo);
-  color: var(--color-text-primary);
+  color: #ffffff;
 }
 
 .logoIcon {

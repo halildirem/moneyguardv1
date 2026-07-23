@@ -22,11 +22,11 @@
 }
 
 .income {
-  color: var(--color-income);
+  color: var(--color-money-income);
 }
 
 .expense {
-  color: var(--color-expense);
+  color: var(--color-money-expense);
 }
 
 .field {
@@ -89,10 +89,10 @@
 }
 
 .primaryBtn {
-  background: var(--btn-primary-bg);
+  background: var(--btn-gold-bg);
   border: none;
   border-radius: var(--radius-btn);
-  color: var(--color-text-primary);
+  color: var(--btn-gold-text);
   font: var(--font-btn);
   letter-spacing: var(--letter-spacing-btn);
   text-transform: uppercase;

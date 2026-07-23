@@ -12,7 +12,7 @@ import {
 } from 'chart.js';
 import { fetchCurrencyRates } from '../../redux/finance/financeOperations';
 import { selectCurrencyRates } from '../../redux/finance/financeSelectors';
-import { rateAgainstUAH } from '../../utils/currency';
+import { tryPerUnit } from '../../utils/currency';
 import css from './Currency.module.css';
 
 ChartJS.register(
@@ -34,16 +34,10 @@ const Currency = () => {
     dispatch(fetchCurrencyRates());
   }, [dispatch]);
 
-  const tryRate = rateAgainstUAH(rates, 'TRY');
-
   const rows = DISPLAYED_CODES.map((code) => {
-    const rate = rateAgainstUAH(rates, code);
-    if (!rate || !tryRate) return null;
-    return {
-      code,
-      buy: rate.buy / tryRate.sell,
-      sell: rate.sell / tryRate.sell,
-    };
+    const rate = tryPerUnit(rates, code);
+    if (!rate) return null;
+    return { code, buy: rate, sell: rate };
   }).filter(Boolean);
 
   const chartData = {
@@ -51,8 +45,8 @@ const Currency = () => {
     datasets: [
       {
         data: rows.map((row) => row.sell),
-        borderColor: '#e0458b',
-        backgroundColor: 'rgba(224, 69, 139, 0.2)',
+        borderColor: '#efce4e',
+        backgroundColor: 'rgba(184, 111, 17, 0.25)',
         fill: true,
         tension: 0.4,
         pointRadius: 3,

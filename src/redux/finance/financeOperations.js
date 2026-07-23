@@ -91,9 +91,8 @@ export const fetchStatistics = createAsyncThunk(
   },
 );
 
-const CURRENCY_CACHE_KEY = 'moneyguard-currency-cache-v2';
+const CURRENCY_CACHE_KEY = 'moneyguard-currency-cache-v3';
 const ONE_HOUR = 60 * 60 * 1000;
-const TRACKED_CURRENCY_CODES = [840, 978, 826, 949];
 
 export const fetchCurrencyRates = createAsyncThunk(
   'finance/fetchCurrencyRates',
@@ -107,12 +106,10 @@ export const fetchCurrencyRates = createAsyncThunk(
         }
       }
 
-      const { data } = await axios.get('https://api.monobank.ua/bank/currency');
-      const rates = data.filter(
-        (item) =>
-          TRACKED_CURRENCY_CODES.includes(item.currencyCodeA) &&
-          item.currencyCodeB === 980,
+      const { data } = await axios.get(
+        'https://api.frankfurter.dev/v1/latest?from=TRY&to=USD,EUR,GBP',
       );
+      const rates = data.rates;
 
       window.localStorage.setItem(
         CURRENCY_CACHE_KEY,

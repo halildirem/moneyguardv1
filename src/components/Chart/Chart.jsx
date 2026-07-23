@@ -1,16 +1,10 @@
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import { CHART_COLORS } from '../../utils/chartColors';
-import { CURRENCY_SYMBOLS } from '../../utils/currency';
+import { CURRENCY_SYMBOLS, formatMoney } from '../../utils/currency';
 import css from './Chart.module.css';
 
 ChartJS.register(ArcElement, Tooltip);
-
-const formatCurrency = (value) =>
-  new Intl.NumberFormat('uk-UA', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(value ?? 0);
 
 const Chart = ({ categories, total, currency }) => {
   const symbol = CURRENCY_SYMBOLS[currency] ?? currency;
@@ -34,7 +28,7 @@ const Chart = ({ categories, total, currency }) => {
       legend: { display: false },
       tooltip: {
         callbacks: {
-          label: (context) => ` ${context.label}: ${symbol} ${formatCurrency(context.parsed)}`,
+          label: (context) => ` ${context.label}: ${symbol} ${formatMoney(context.parsed)}`,
         },
       },
     },
@@ -44,7 +38,7 @@ const Chart = ({ categories, total, currency }) => {
     <div className={css.wrapper}>
       <Doughnut data={data} options={options} />
       <div className={css.centerLabel}>
-        {symbol} {formatCurrency(total)}
+        {symbol} {formatMoney(total)}
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import {
   selectCurrencyRates,
   selectSelectedCurrency,
 } from '../../redux/finance/financeSelectors';
-import { convertFromUAH } from '../../utils/currency';
+import { convertFromBase } from '../../utils/currency';
 import StatisticsDashboard from '../../components/StatisticsDashboard/StatisticsDashboard';
 import Chart from '../../components/Chart/Chart';
 import StatisticsTable from '../../components/StatisticsTable/StatisticsTable';
@@ -25,7 +25,7 @@ const StatisticsTab = () => {
     dispatch(fetchStatistics({ month, year }));
   }, [dispatch, month, year]);
 
-  const convert = (amountUAH) => convertFromUAH(amountUAH, currency, rates);
+  const convert = (amount) => convertFromBase(amount, currency, rates);
 
   const categories = (statistics?.categoriesSummary ?? [])
     .filter((category) => category.type === 'EXPENSE')

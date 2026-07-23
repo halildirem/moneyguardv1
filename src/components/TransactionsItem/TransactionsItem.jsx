@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { MdEdit } from 'react-icons/md';
 import { deleteTransaction } from '../../redux/finance/financeOperations';
 import { refreshUser } from '../../redux/auth/authOperations';
+import { convertFromBase, formatMoney } from '../../utils/currency';
 import css from './TransactionsItem.module.css';
 
 const formatDate = (isoDate) => {
@@ -12,9 +13,10 @@ const formatDate = (isoDate) => {
   return `${day}.${month}.${date.getFullYear()}`;
 };
 
-const TransactionsItem = ({ transaction, categoryName, onEdit }) => {
+const TransactionsItem = ({ transaction, categoryName, onEdit, currency, rates }) => {
   const dispatch = useDispatch();
   const isExpense = transaction.type === 'EXPENSE';
+  const convertedAmount = convertFromBase(Math.abs(transaction.amount), currency, rates);
 
   const handleDelete = async () => {
     try {
@@ -45,7 +47,7 @@ const TransactionsItem = ({ transaction, categoryName, onEdit }) => {
         data-label="Sum"
         className={`${css.cell} ${isExpense ? css.sumExpense : css.sumIncome}`}
       >
-        {Math.abs(transaction.amount).toFixed(2)}
+        {formatMoney(convertedAmount)}
       </td>
       <td className={css.actions}>
         <button

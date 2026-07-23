@@ -8,14 +8,8 @@ import {
   selectCurrencyRates,
   selectSelectedCurrency,
 } from '../../redux/finance/financeSelectors';
-import { CURRENCIES, convertFromUAH } from '../../utils/currency';
+import { CURRENCIES, convertFromBase, formatMoney } from '../../utils/currency';
 import css from './Balance.module.css';
-
-const formatCurrency = (value) =>
-  new Intl.NumberFormat('uk-UA', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(value ?? 0);
 
 const CurrencySymbolDropdown = ({ value, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,7 +76,7 @@ const Balance = () => {
     dispatch(fetchCurrencyRates());
   }, [dispatch]);
 
-  const convertedBalance = convertFromUAH(totalBalance, currency, rates);
+  const convertedBalance = convertFromBase(totalBalance, currency, rates);
 
   return (
     <div className={css.balance}>
@@ -92,7 +86,7 @@ const Balance = () => {
           value={currency}
           onChange={(code) => dispatch(setSelectedCurrency(code))}
         />
-        {formatCurrency(convertedBalance)}
+        {formatMoney(convertedBalance)}
       </div>
     </div>
   );

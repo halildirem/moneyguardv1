@@ -42,5 +42,12 @@
   display: flex;
   justify-content: space-between;
   font: var(--font-table-body);
-  color: var(--color-expense-alt);
+}
+
+.summaryRowExpense {
+  color: var(--color-money-expense);
+}
+
+.summaryRowIncome {
+  color: var(--color-money-income);
 }

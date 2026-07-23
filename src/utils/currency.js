@@ -1,5 +1,3 @@
-export const CURRENCY_CODE_NAMES = { 840: 'USD', 978: 'EUR', 826: 'GBP', 949: 'TRY' };
-
 export const CURRENCIES = [
   { code: 'TRY', symbol: '₺' },
   { code: 'USD', symbol: '$' },
@@ -12,18 +10,27 @@ export const CURRENCY_SYMBOLS = CURRENCIES.reduce((acc, currency) => {
   return acc;
 }, {});
 
-export const rateAgainstUAH = (rates, code) => {
-  const rate = rates.find(
-    (item) => CURRENCY_CODE_NAMES[item.currencyCodeA] === code,
-  );
-  if (!rate) return null;
-  return {
-    buy: rate.rateBuy ?? rate.rateCross,
-    sell: rate.rateSell ?? rate.rateCross,
-  };
+export const BASE_CURRENCY = 'TRY';
+
+// Amounts are entered and stored in the app's base currency (TRY). `rates`
+// comes from the Frankfurter API (base=TRY) and maps each foreign currency
+// code to how many units of it equal 1 TRY.
+export const convertFromBase = (amountBase, currency, rates) => {
+  if (currency === BASE_CURRENCY) return amountBase;
+  const rate = rates?.[currency];
+  if (!rate) return amountBase;
+  return amountBase * rate;
 };
 
-export const convertFromUAH = (amountUAH, currency, rates) => {
-  const rate = rateAgainstUAH(rates, currency);
-  return rate ? amountUAH / rate.sell : amountUAH;
+// How many TRY one unit of the given foreign currency is worth — used for
+// the currency reference table (inverse of the base-currency rate).
+export const tryPerUnit = (rates, code) => {
+  const rate = rates?.[code];
+  return rate ? 1 / rate : null;
 };
+
+export const formatMoney = (value) =>
+  new Intl.NumberFormat('tr-TR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(value ?? 0);

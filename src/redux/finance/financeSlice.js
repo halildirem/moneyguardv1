@@ -15,7 +15,7 @@ const initialState = {
   categories: [],
   totalBalance: 0,
   statistics: null,
-  currencyRates: [],
+  currencyRates: {},
   selectedCurrency: 'TRY',
 };
 
