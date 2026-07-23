@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--spacing-lg);
-  background-image: url('../../assets/backgrounds/bg-login.png');
+  background-image: url('../../assets/backgrounds/bg-login.webp');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -16,9 +16,9 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(26, 10, 46, 0.82) 0%,
-    rgba(43, 26, 74, 0.72) 50%,
-    rgba(10, 5, 20, 0.82) 100%
+    rgba(8, 15, 67, 0.55) 0%,
+    rgba(15, 24, 129, 0.35) 50%,
+    rgba(8, 15, 67, 0.55) 100%
   );
 }
 

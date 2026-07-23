@@ -52,7 +52,7 @@
   }
 
   .active {
-    background: linear-gradient(135deg, #f8a23a, #e0458b);
+    background: var(--btn-gold-bg);
   }
 }
 

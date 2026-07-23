@@ -12,9 +12,6 @@ export const CURRENCY_SYMBOLS = CURRENCIES.reduce((acc, currency) => {
 
 export const BASE_CURRENCY = 'TRY';
 
-// Amounts are entered and stored in the app's base currency (TRY). `rates`
-// comes from the Frankfurter API (base=TRY) and maps each foreign currency
-// code to how many units of it equal 1 TRY.
 export const convertFromBase = (amountBase, currency, rates) => {
   if (currency === BASE_CURRENCY) return amountBase;
   const rate = rates?.[currency];
@@ -22,8 +19,6 @@ export const convertFromBase = (amountBase, currency, rates) => {
   return amountBase * rate;
 };
 
-// How many TRY one unit of the given foreign currency is worth — used for
-// the currency reference table (inverse of the base-currency rate).
 export const tryPerUnit = (rates, code) => {
   const rate = rates?.[code];
   return rate ? 1 / rate : null;
