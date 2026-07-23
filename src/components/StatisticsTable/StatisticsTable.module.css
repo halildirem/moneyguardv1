@@ -26,8 +26,40 @@
   flex-shrink: 0;
 }
 
+.colorBadge1 {
+  background-color: var(--chart-color-1);
+}
+
+.colorBadge2 {
+  background-color: var(--chart-color-2);
+}
+
+.colorBadge3 {
+  background-color: var(--chart-color-3);
+}
+
+.colorBadge4 {
+  background-color: var(--chart-color-4);
+}
+
+.colorBadge5 {
+  background-color: var(--chart-color-5);
+}
+
+.colorBadge6 {
+  background-color: var(--chart-color-6);
+}
+
+.colorBadge7 {
+  background-color: var(--chart-color-7);
+}
+
 .name {
   flex: 1;
+}
+
+.total {
+  flex-shrink: 0;
 }
 
 .summary {

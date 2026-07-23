@@ -8,6 +8,7 @@ import { MdCalendarToday } from 'react-icons/md';
 import { updateTransaction } from '../../redux/finance/financeOperations';
 import { refreshUser } from '../../redux/auth/authOperations';
 import { selectCategories } from '../../redux/finance/financeSelectors';
+import buttons from '../../styles/buttons.module.css';
 import css from './EditTransactionForm.module.css';
 
 const schema = yup.object({
@@ -121,11 +122,11 @@ const EditTransactionForm = ({ transaction, onClose }) => {
       </div>
       {errors.comment && <p className={css.error}>{errors.comment.message}</p>}
 
-      <div className={css.actions}>
-        <button type="submit" className={css.primaryBtn}>
+      <div className={buttons.actions}>
+        <button type="submit" className={buttons.primaryBtn}>
           Save
         </button>
-        <button type="button" className={css.secondaryBtn} onClick={onClose}>
+        <button type="button" className={buttons.secondaryBtn} onClick={onClose}>
           Cancel
         </button>
       </div>

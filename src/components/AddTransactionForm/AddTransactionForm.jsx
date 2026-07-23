@@ -9,21 +9,15 @@ import { MdCalendarToday, MdKeyboardArrowDown } from 'react-icons/md';
 import { addTransaction } from '../../redux/finance/financeOperations';
 import { refreshUser } from '../../redux/auth/authOperations';
 import { selectCategories } from '../../redux/finance/financeSelectors';
+import useClickOutside from '../../hooks/useClickOutside';
+import buttons from '../../styles/buttons.module.css';
 import css from './AddTransactionForm.module.css';
 
 const CategoryDropdown = ({ categories, value, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  useClickOutside(wrapperRef, () => setIsOpen(false));
 
   const selectedCategory = categories.find((category) => category.id === value);
 
@@ -238,11 +232,11 @@ const AddTransactionForm = ({ onClose }) => {
       </div>
       {errors.comment && <p className={css.error}>{errors.comment.message}</p>}
 
-      <div className={css.actions}>
-        <button type="submit" className={css.primaryBtn}>
+      <div className={buttons.actions}>
+        <button type="submit" className={buttons.primaryBtn}>
           Add
         </button>
-        <button type="button" className={css.secondaryBtn} onClick={onClose}>
+        <button type="button" className={buttons.secondaryBtn} onClick={onClose}>
           Cancel
         </button>
       </div>

@@ -1,13 +1,7 @@
 :root {
   --color-bg-dark: #1a0a2e;
-  --color-bg-medium: #2b1a4a;
-  --color-bg-light: #3a2160;
 
   --color-card-bg: linear-gradient(180deg, rgba(50, 65, 225, 0.85) 0%, rgba(8, 15, 69, 0.85) 100%);
-  --color-sidebar-bg: #2d1b55;
-
-  --color-accent-gradient-start: #f8a23a;
-  --color-accent-gradient-end: #e0458b;
 
   --color-dashboard-bg-start: #080f43;
   --color-dashboard-bg-mid: #0f1881;
@@ -20,9 +14,7 @@
   --color-text-secondary: rgba(255, 255, 255, 0.6);
   --color-text-muted: rgba(255, 255, 255, 0.4);
 
-  --color-income: #ffb627;
-  --color-expense: #ff6596;
-  --color-expense-alt: #f8a23a;
+  --color-accent: #ff6596;
 
   --color-money-income: #66ff64;
   --color-money-expense: #ff5f6d;
@@ -32,7 +24,9 @@
   --color-nav-active-bg: rgba(255, 255, 255, 0.15);
   --color-table-header: rgba(255, 255, 255, 0.1);
 
-  --btn-primary-bg: linear-gradient(90deg, #f8a23a 0%, #e0458b 100%);
+  --progress-fill-bg: linear-gradient(90deg, #f8a23a 0%, #e0458b 100%);
+  --progress-match-bg: #ffb627;
+
   --btn-secondary-bg: transparent;
   --btn-secondary-border: #ffffff;
   --btn-secondary-text: #ffffff;
@@ -56,8 +50,6 @@
 
   --radius-card: 20px;
   --radius-btn: 30px;
-  --radius-input: 0px;
-  --radius-sidebar: 0px;
   --radius-dropdown: 8px;
   --radius-table-header: 8px;
 
@@ -78,7 +70,6 @@
   --font-table-header: 500 14px/1.5 var(--font-family);
   --font-table-body: 400 14px/1.5 var(--font-family);
   --font-input: 400 18px/1.5 var(--font-family);
-  --font-placeholder: 400 18px/1.5 var(--font-family);
   --font-btn: 600 18px/1.2 var(--font-family);
   --letter-spacing-btn: 1.5px;
   --font-small: 400 12px/1.5 var(--font-family);

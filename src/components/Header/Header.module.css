@@ -87,32 +87,6 @@
   width: 100%;
 }
 
-.primaryBtn {
-  background: var(--btn-gold-bg);
-  border: none;
-  border-radius: var(--radius-btn);
-  color: var(--btn-gold-text);
-  font: var(--font-btn);
-  letter-spacing: var(--letter-spacing-btn);
-  text-transform: uppercase;
-  height: 50px;
-  width: 100%;
-  cursor: pointer;
-}
-
-.secondaryBtn {
-  background: var(--btn-secondary-bg);
-  border: 2px solid var(--btn-secondary-border);
-  border-radius: var(--radius-btn);
-  color: var(--btn-secondary-text);
-  font: var(--font-btn);
-  letter-spacing: var(--letter-spacing-btn);
-  text-transform: uppercase;
-  height: 50px;
-  width: 100%;
-  cursor: pointer;
-}
-
 @media (max-width: 767px) {
   .header {
     padding: 0 var(--spacing-md);

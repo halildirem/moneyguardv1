@@ -83,5 +83,5 @@
 }
 
 .dropdownItemActive {
-  color: var(--color-expense);
+  color: var(--color-accent);
 }

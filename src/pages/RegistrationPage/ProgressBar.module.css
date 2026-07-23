@@ -8,12 +8,14 @@
 
 .fillProgress {
   height: 100%;
-  background: var(--btn-primary-bg);
+  width: var(--fill-width, 0%);
+  background: var(--progress-fill-bg);
   transition: width 0.2s ease;
 }
 
 .fillMatch {
   height: 100%;
-  background: var(--color-income);
+  width: var(--fill-width, 0%);
+  background: var(--progress-match-bg);
   transition: width 0.2s ease;
 }

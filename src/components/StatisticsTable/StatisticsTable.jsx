@@ -1,6 +1,15 @@
-import { CHART_COLORS } from '../../utils/chartColors';
 import { formatMoney } from '../../utils/currency';
 import css from './StatisticsTable.module.css';
+
+const BADGE_COLOR_CLASSES = [
+  css.colorBadge1,
+  css.colorBadge2,
+  css.colorBadge3,
+  css.colorBadge4,
+  css.colorBadge5,
+  css.colorBadge6,
+  css.colorBadge7,
+];
 
 const StatisticsTable = ({ categories, expenseSummary, incomeSummary }) => {
   return (
@@ -9,10 +18,7 @@ const StatisticsTable = ({ categories, expenseSummary, incomeSummary }) => {
         {categories.map((category, index) => (
           <div className={css.row} key={category.name}>
             <span
-              className={css.colorBadge}
-              style={{
-                backgroundColor: CHART_COLORS[index % CHART_COLORS.length],
-              }}
+              className={`${css.colorBadge} ${BADGE_COLOR_CLASSES[index % BADGE_COLOR_CLASSES.length]}`}
             />
             <span className={css.name}>{category.name}</span>
             <span className={css.total}>{formatMoney(category.total)}</span>

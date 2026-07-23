@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { MdEmail, MdLock } from 'react-icons/md';
 import { logIn } from '../../redux/auth/authOperations';
+import buttons from '../../styles/buttons.module.css';
 import css from './LoginForm.module.css';
 
 const schema = yup.object({
@@ -69,11 +70,11 @@ const LoginForm = () => {
         <p className={css.error}>{errors.password.message}</p>
       )}
 
-      <div className={css.actions}>
-        <button type="submit" className={css.primaryBtn}>
+      <div className={buttons.actions}>
+        <button type="submit" className={buttons.primaryBtn}>
           Log in
         </button>
-        <Link to="/register" className={css.secondaryBtn}>
+        <Link to="/register" className={buttons.secondaryLinkBtn}>
           Register
         </Link>
       </div>

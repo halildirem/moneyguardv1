@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { MdEmail, MdLock, MdPerson } from 'react-icons/md';
 import { register as registerUser } from '../../redux/auth/authOperations';
 import ProgressBar from './ProgressBar';
+import buttons from '../../styles/buttons.module.css';
 import css from './RegistrationForm.module.css';
 
 const schema = yup.object({
@@ -112,11 +113,11 @@ const RegistrationForm = () => {
         <p className={css.error}>{errors.confirmPassword.message}</p>
       )}
 
-      <div className={css.actions}>
-        <button type="submit" className={css.primaryBtn}>
+      <div className={buttons.actions}>
+        <button type="submit" className={buttons.primaryBtn}>
           Register
         </button>
-        <Link to="/login" className={css.secondaryBtn}>
+        <Link to="/login" className={buttons.secondaryLinkBtn}>
           Log in
         </Link>
       </div>

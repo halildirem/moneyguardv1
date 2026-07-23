@@ -7,6 +7,7 @@ import { selectUser } from '../../redux/auth/authSelectors';
 import { logOut } from '../../redux/auth/authOperations';
 import LogoIcon from '../LogoIcon/LogoIcon';
 import Modal from '../Modal/Modal';
+import buttons from '../../styles/buttons.module.css';
 import css from './Header.module.css';
 
 const Header = () => {
@@ -61,14 +62,14 @@ const Header = () => {
             <div className={css.logoutActions}>
               <button
                 type="button"
-                className={css.primaryBtn}
+                className={buttons.primaryBtn}
                 onClick={handleLogout}
               >
                 Logout
               </button>
               <button
                 type="button"
-                className={css.secondaryBtn}
+                className={buttons.secondaryBtn}
                 onClick={() => setShowLogoutModal(false)}
               >
                 Cancel

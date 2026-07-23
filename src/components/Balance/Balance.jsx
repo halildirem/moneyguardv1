@@ -9,21 +9,14 @@ import {
   selectSelectedCurrency,
 } from '../../redux/finance/financeSelectors';
 import { CURRENCIES, convertFromBase, formatMoney } from '../../utils/currency';
+import useClickOutside from '../../hooks/useClickOutside';
 import css from './Balance.module.css';
 
 const CurrencySymbolDropdown = ({ value, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  useClickOutside(wrapperRef, () => setIsOpen(false));
 
   const selected = CURRENCIES.find((currency) => currency.code === value);
 

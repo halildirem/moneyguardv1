@@ -73,7 +73,7 @@
 }
 
 .dropdownItemActive {
-  color: var(--color-expense);
+  color: var(--color-accent);
 }
 
 @media (max-width: 767px) {

@@ -12,13 +12,13 @@ const DashboardPage = () => {
       <div className={css.content}>
         <Header />
         <div className={css.body}>
-          <aside className={css.sidebar}>
+          <div className={css.sidebar}>
             <Navigation />
             <Balance />
             <div className={css.currencySlot}>
               <Currency />
             </div>
-          </aside>
+          </div>
           <main className={css.main}>
             <Outlet />
           </main>

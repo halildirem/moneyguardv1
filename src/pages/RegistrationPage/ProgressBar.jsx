@@ -10,7 +10,7 @@ const ProgressBar = ({ password, confirmPassword }) => {
     <div className={css.track}>
       <div
         className={matches ? css.fillMatch : css.fillProgress}
-        style={{ width: `${filled}%` }}
+        style={{ '--fill-width': `${filled}%` }}
       />
     </div>
   );
