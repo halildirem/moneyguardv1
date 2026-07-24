@@ -61,4 +61,5 @@ Vite manual chunk splitting for vendor libraries
 
 
 👤 Developer
+
 Halil Direm — Team Leader / Scrum Master / Frontend Developer
