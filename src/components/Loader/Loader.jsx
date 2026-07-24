@@ -12,7 +12,7 @@ const Loader = () => {
 
   return (
     <div className={css.overlay}>
-      <ThreeDots color="#F8A23A" height={80} width={80} />
+      <ThreeDots color="#efce4e" height={80} width={80} />
     </div>
   );
 };
