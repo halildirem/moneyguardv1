@@ -6,7 +6,7 @@ A personal finance tracker built with React + Vite. Track your income and expens
 
 ✨ Features
 
-Core
+**Core**
 
 User registration and login with JWT authentication
 Add, edit, and delete income/expense transactions
@@ -16,13 +16,18 @@ Real-time exchange rates via Frankfurter API (1-hour cache)
 Responsive design for mobile, tablet, and desktop
 
 
-Custom Additions
+**Custom Additions**
 
 🇹🇷 Localized background visuals — Login and Register page backgrounds feature Turkish Lira banknotes instead of the original USD design, reflecting a localized experience
+
 🎨 Custom color theme — The original purple/violet palette was replaced with a blue and gold theme for a more distinctive and modern look. All colors were verified for WCAG contrast compliance using online contrast checkers
+
 💱 Multi-currency balance display — A dropdown on the Balance component lets users view their balance in TRY, USD, EUR, or GBP, with live conversion using Frankfurter exchange rates. Transaction summaries also update automatically based on the selected currency
+
 📅 Custom datepicker design — The date picker in Add Transaction was styled to match the app's blue theme (not provided in the original Figma)
+
 🔢 Formatted number display — Amounts are formatted with dot separators for readability (e.g. 40.500,00 instead of 4050000)
+
 📱 Repositioned mobile FAB — The Add Transaction floating button was moved to the center of the screen on mobile to avoid blocking content and improve usability
 
 
@@ -35,7 +40,7 @@ React Router DOM	Client-side routing, protected routes
 React Hook Form + Yup	Form handling and validation
 Axios	HTTP client with auth interceptor
 Chart.js + react-chartjs-2	Doughnut chart for statistics
-Frankfurter API	Real-time exchange rates
+Frankfurter API exchange rates
 react-datepicker	Date selection in transaction forms
 CSS Modules + CSS Variables	Scoped styles, design tokens
 modern-normalize	Cross-browser CSS reset
