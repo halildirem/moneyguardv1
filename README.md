@@ -45,21 +45,6 @@ react-datepicker	Date selection in transaction forms
 CSS Modules + CSS Variables	Scoped styles, design tokens
 modern-normalize	Cross-browser CSS reset
 
-
-🏗 Architecture
-
-src/
-├── assets/           # Background images, icons
-├── components/       # Reusable UI components
-├── pages/            # Route-level page components
-├── redux/            # Store, slices, operations
-│   ├── auth/         # Login, register, refresh, logout
-│   ├── finance/      # Transactions, categories, balance
-│   └── statistics/   # Statistics by month/year
-├── styles/           # Global CSS variables, resets
-└── utils/            # axios instance, helpers
-
-
 🔐 Auth Flow
 
 On app load, refreshUser is dispatched — if a token exists in localStorage, the user session is restored automatically
