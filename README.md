@@ -56,7 +56,7 @@ On logout, Redux store and localStorage are cleared, user is redirected to /logi
 ⚡ Performance
 
 Route-level lazy loading with React.lazy + Suspense
-Frankfurter API responses cached in localStorage for 1 hour
+Frankfurter API responses cached in localStorage
 Vite manual chunk splitting for vendor libraries
 
 
