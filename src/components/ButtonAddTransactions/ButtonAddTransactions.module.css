@@ -16,3 +16,10 @@
   box-shadow: 0 4px 16px rgba(184, 111, 17, 0.5);
   z-index: 500;
 }
+
+@media (max-width: 767px) {
+  .fab {
+    right: 50%;
+    transform: translateX(50%);
+  }
+}

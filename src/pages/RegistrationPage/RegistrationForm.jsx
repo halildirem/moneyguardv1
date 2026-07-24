@@ -42,7 +42,6 @@ const RegistrationForm = () => {
   });
 
   const password = watch('password', '');
-  const confirmPassword = watch('confirmPassword', '');
 
   const onSubmit = async (values) => {
     try {
@@ -108,7 +107,7 @@ const RegistrationForm = () => {
           {...register('confirmPassword')}
         />
       </div>
-      <ProgressBar password={password} confirmPassword={confirmPassword} />
+      <ProgressBar password={password} />
       {errors.confirmPassword && (
         <p className={css.error}>{errors.confirmPassword.message}</p>
       )}

@@ -3,7 +3,6 @@ import Header from '../../components/Header/Header';
 import Navigation from '../../components/Navigation/Navigation';
 import Balance from '../../components/Balance/Balance';
 import Currency from '../../components/Currency/Currency';
-import Loader from '../../components/Loader/Loader';
 import css from './DashboardPage.module.css';
 
 const DashboardPage = () => {
@@ -23,7 +22,6 @@ const DashboardPage = () => {
             <Outlet />
           </main>
         </div>
-        <Loader />
       </div>
     </div>
   );

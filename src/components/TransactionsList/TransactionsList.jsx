@@ -24,7 +24,7 @@ const TransactionsList = ({ onEdit }) => {
   }
 
   return (
-    <div className={css.wrapper}>
+    <div>
       <table className={css.table}>
         <thead>
           <tr>

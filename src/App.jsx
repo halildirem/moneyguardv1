@@ -12,6 +12,7 @@ import {
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import PublicRoute from './components/PublicRoute/PublicRoute';
 import SuspenseFallback from './components/SuspenseFallback/SuspenseFallback';
+import Loader from './components/Loader/Loader';
 
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const RegistrationPage = lazy(
@@ -76,6 +77,7 @@ function App() {
           <Route path="*" element={<NotFoundRedirect />} />
         </Routes>
       </Suspense>
+      <Loader />
       <ToastContainer position="top-right" autoClose={3000} theme="dark" />
     </>
   );
