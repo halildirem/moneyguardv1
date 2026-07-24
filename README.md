@@ -8,12 +8,12 @@ A personal finance tracker built with React + Vite. Track your income and expens
 
 **Core**
 
--User registration and login with JWT authentication
--Add, edit, and delete income/expense transactions
--Statistics page with Doughnut chart by category
--Month/year filtering for transaction statistics
--Real-time exchange rates via Frankfurter API (1-hour cache)
--Responsive design for mobile, tablet, and desktop
+- User registration and login with JWT authentication
+- Add, edit, and delete income/expense transactions
+- Statistics page with Doughnut chart by category
+- Month/year filtering for transaction statistics
+- Real-time exchange rates via Frankfurter API (1-hour cache)
+- Responsive design for mobile, tablet, and desktop
 
 **Custom Additions**
 
@@ -32,32 +32,31 @@ A personal finance tracker built with React + Vite. Track your income and expens
 
 🛠 Tech Stack
 
--Technology	Purpose
--React 19 + Vite	UI framework and build tool
--Redux Toolkit + redux-persist	Global state management, token persistence
--React Router DOM	Client-side routing, protected routes
--React Hook Form + Yup	Form handling and validation
--Axios	HTTP client with auth interceptor
--Chart.js + react-chartjs-2	Doughnut chart for statistics
--Frankfurter API exchange rates
--react-datepicker	Date selection in transaction forms
--CSS Modules + CSS Variables	Scoped styles, design tokens
--modern-normalize	Cross-browser CSS reset
+- Technology	Purpose
+- React 19 + Vite	UI framework and build tool
+- Redux Toolkit + redux-persist	Global state management, token persistence
+- React Router DOM	Client-side routing, protected routes
+- React Hook Form + Yup	Form handling and validation
+- Axios	HTTP client with auth interceptor
+- Chart.js + react-chartjs-2	Doughnut chart for statistics
+- Frankfurter API exchange rates
+- react-datepicker	Date selection in transaction forms
+- CSS Modules + CSS Variables	Scoped styles, design tokens
+- modern-normalize	Cross-browser CSS reset
 
 🔐 Auth Flow
 
--On app load, refreshUser is dispatched — if a token exists in localStorage, the user session is restored automatically
--PrivateRoute redirects unauthenticated users to /login
--PublicRoute redirects authenticated users away from /login and /register
--On logout, Redux store and localStorage are cleared, user is redirected to /login
+- On app load, refreshUser is dispatched — if a token exists in localStorage, the user session is restored automatically
+- PrivateRoute redirects unauthenticated users to /login
+- PublicRoute redirects authenticated users away from /login and /register
+- On logout, Redux store and localStorage are cleared, user is redirected to /login
 
 
 ⚡ Performance
 
--Route-level lazy loading with React.lazy + Suspense
--Frankfurter API responses cached in localStorage
--Vite manual chunk splitting for vendor libraries
-
+- Route-level lazy loading with React.lazy + Suspense
+- Frankfurter API responses cached in localStorage
+- Vite manual chunk splitting for vendor libraries
 
 👤 Developer
 
